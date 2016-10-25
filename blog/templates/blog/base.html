@@ -1,16 +1,19 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>ECT News</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
         <div class="page-header">
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">Django Girls Blog</a></h1>
+            <h1><a href="/">ECT News</a></h1>
+            <h4>AS NOVIDADES DA ESCOLA DE CIÊNCIAS E TECNOLOGIA - UFRN</h4>
         </div>
         <div class="content container">
             <div class="row">
@@ -19,6 +22,9 @@
                 {% endblock %}
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            &copy; Copyright 2016 Rafael Garcia. All right reserved
         </div>
     </body>
 </html>
