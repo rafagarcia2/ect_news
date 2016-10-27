@@ -59,6 +59,9 @@ h1, h2, h3, h4 {
     color: #000000;
 }
 
+.post img {
+    margin-left: 40px;
+}
 .footer {
     position: relative;
     bottom:0;
