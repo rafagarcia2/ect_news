@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -114,6 +115,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+# E-Mails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#DEFAULT_FROM_EMAIL = 'blog@ejectufrn.com.br'
+EMAIL_USE_TLS = True
+SERVER_EMAIL = 'rafaeldantas@ejectufrn.com.br'
+EMAIL_HOST = 'rafaeldantas@ejectufrn.com.br'
+EMAIL_HOST_PASSWORD = 'detonexons123'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
