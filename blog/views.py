@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from .forms import UploadFileForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def post_list(request):
@@ -30,6 +31,7 @@ def post_detail(request, pk):
 # Imaginary function to handle an uploaded file.
 
 
+@login_required
 def post_new(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -45,6 +47,7 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
