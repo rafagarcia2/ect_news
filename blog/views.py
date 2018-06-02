@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post
-from .forms import UploadFileForm
+from .forms import PostForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -34,7 +35,7 @@ def post_detail(request, pk):
 @login_required
 def post_new(request):
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.published_date = timezone.now()
@@ -43,7 +44,7 @@ def post_new(request):
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
-        form = UploadFileForm()
+        form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
@@ -51,7 +52,7 @@ def post_new(request):
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = UploadFileForm(request.POST, instance=post)
+        form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -59,5 +60,5 @@ def post_edit(request, pk):
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
-        form = UploadFileForm(instance=post)
+        form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
